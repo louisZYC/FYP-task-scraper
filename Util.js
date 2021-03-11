@@ -21,11 +21,11 @@ Util = {
         return out
     },
     inSeries: async function (args, asyncFn) {// run async in series 
-        return args.reduce(async (acc, ...arg) => {
+        return args.reduce(async (acc, arg) => {
             const results = await acc;
-            console.log(...arg)
+            console.log(arg)
             try {
-                results.push(await asyncFn(...arg))
+                results.push(await asyncFn(arg))
             } catch (err) {
                 if (err) throw err
             }
@@ -36,8 +36,8 @@ Util = {
     inParallel: async function (args, asyncFn) { //run async in parallel
         try {
             const results = await Promise.all(
-                args.map(async (...arg) => {
-                    return asyncFn(...arg)
+                args.map(async (arg) => {
+                    return asyncFn(arg)
                 })
             )
             // [[1,2],[2,3],[3,4]] -> [1,2,2,3,3,4]
