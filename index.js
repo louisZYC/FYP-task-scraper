@@ -18,7 +18,7 @@ const domainName = "https://www.swd.gov.hk";
 
         const servicesUrls = Util.mapUrl(bigGroups)
         const services = await Util.inParallelWithLimit(servicesUrls, 30, servicesParse)
-        // console.log(JSON.stringify(services, null, 2))
+        console.log(JSON.stringify(services, null, 2))
 
         // fs.writeFile('services.json', JSON.stringify(services), { flag: 'w' }, () => { console.log('services.json saved') })
         return
